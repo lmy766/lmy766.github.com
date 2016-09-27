@@ -1,93 +1,28 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=uft-8"/>
-<title>Our Story</title>
-<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="foo1.js"></script>
-<style>
-#autotype{font-family:YouYuan;width:350px;color:white;height:400px;margin:40px auto;line-height:50px; font-size:18px;font-weight:700}
-#autotype h1{font-weight:900;padding-left:100px;}
-#autotype p{ padding-left:150px; font-size:14px;line-height:20px;}
-#automiss{ font-size:14px;font-family:宋体;width:350px;color:yellow;height:100px;margin:40px auto;line-height:50px; font-size:18px;font-weight:700}
+﻿
 
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Samaritan</title>
+   
+    <script src="js/jquery-1.9.1.min.js"></script>
+     <script src="js/index.js"></script>
+    <style>
+        body{background-color:#fff;color:#625e5e; }
+        #main{width:80%;margin:0 auto;height:400px;margin-top:100px;}
+		.word{height:auto;margin:0 auto;min-height:30px; color:#625e5e; font-family:Arial;font-weight:700;font-size:18px; display:none; line-height:28px; }      
+        #icon{margin:10px auto;  width :0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-bottom:20px solid #625e5e;}
 </style>
 </head>
- <body style="background-color:#000;">
-<div id="autotype">
-   <h1>&#x4E00; &#x526A; &#x6885;</h1> 
-   <p>&#x674E;&#x6E05;&#x7167;</p>
-&#x7EA2;&#x85D5;&#x9999;&#x6B8B;&#x7389;&#x7C1F;&#x79CB;&#xFF0C;&#x8F7B;&#x89E3;&#x7F57;&#x88F3;&#xFF0C;&#x72EC;&#x4E0A;&#x5170;&#x821F;&#x3002;<br/>
-&#x4E91;&#x4E2D;&#x8C01;&#x5BC4;&#x9526;&#x4E66;&#x6765;&#xFF1F;<br/>
-&#x96C1;&#x5B57;&#x56DE;&#x65F6;&#xFF0C;&#x6708;&#x6EE1;&#x897F;&#x697C;&#x3002;<br/>
-&#x82B1;&#x81EA;&#x98D8;&#x96F6;&#x6C34;&#x81EA;&#x6D41;&#xFF0C;&#x4E00;&#x79CD;&#x76F8;&#x601D;&#xFF0C;
-&#x4E24;&#x5904;&#x95F2;&#x6101;&#x3002;<br/>
-&#x6B64;&#x60C5;&#x65E0;&#x8BA1;&#x53EF;&#x6D88;&#x9664;&#xFF0C;<br/>
-&#x624D;&#x4E0B;&#x7709;&#x5934;&#xFF0C;&#x5374;&#x4E0A;&#x5FC3;&#x5934;&#x3002;<br/>
+<body>
+<form id="form1" runat="server">
+<div id="main"> 
+<div id="word" class="word"></div>
+<div id="icon"></div>
+
 </div>
-<div id='automiss'>&#x9732;&#x9732;&#xFF0C;&#x6211;&#x73B0;&#x5728;&#x7279;&#x7279;&#x7279;&#x7279;&#x7279;&#x522B;&#x60F3;&#x4F60;&#xFF01;</div>
-<script>
-    $.fn.autotype = function() {
-      var _this=$(this);
-      var str=_this.html();
-      // 正则替换代码行之间添加的多个空格，不去除换行输出会有明显的停顿：实际是在输出多个空格
-      str=str.replace(/(s){2,}/g,"$1");
-        var index = 0;
-        $(this).html('');
-        var timer = function() {
-            var args=arguments;
-            var current = str.slice(index, index+1);
-            // html标签完整输出,如：<p>
-            if (current == '<'){
-                index = str.indexOf('>', index) + 1;
-            }
-            else{
-            index++;
-            }
-            //位运算符: 根据setInterval运行奇偶次来判断是否加入下划线字符“_”，使输入效果更逼真
-            if (index < str.length-1){ //打印字符倒数第2个字符开始，不加下划线字符，以防止结束符可能会多输出一下划线字符
-                _this.html(str.substring(0, index) + (index & 1 ? '_' : ''));
-            }else{
-                _this.html(str.substring(0, index));
-                clearTimeout(timer);
-            };
-            setTimeout(args.callee,400)
-        };
-        // 延迟1s开始
-        setTimeout(timer,1000);
-    };
-    $("#autotype").autotype();	 
- 
-    $.fn.automiss = function() {
-      var _this=$(this);
-      var str=_this.html();
-      // 正则替换代码行之间添加的多个空格，不去除换行输出会有明显的停顿：实际是在输出多个空格
-      str=str.replace(/(s){2,}/g,"$1");
-        var index = 0;
-        $(this).html('');
-        var timer = function() {
-            var args=arguments;
-            var current = str.slice(index, index+1);
-            // html标签完整输出,如：<p>
-            if (current == '<'){
-                index = str.indexOf('>', index) + 1;
-            }
-            else{
-            index++;
-            }
-            //位运算符: 根据setInterval运行奇偶次来判断是否加入下划线字符“_”，使输入效果更逼真
-            if (index < str.length-1){ //打印字符倒数第2个字符开始，不加下划线字符，以防止结束符可能会多输出一下划线字符
-                _this.html(str.substring(0, index) + (index & 1 ? '_' : ''));
-            }else{
-                _this.html(str.substring(0, index));
-                clearTimeout(timer);
-            };
-            setTimeout(args.callee,1000)
-        };
-        // 延迟1s开始
-        setTimeout(timer,76000);
-    };
-    $("#automiss").automiss();	 
-</script>
+</form>
 </body>
 </html>
