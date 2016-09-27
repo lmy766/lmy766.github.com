@@ -15,15 +15,14 @@
 );
 
 
-var _index=0
+var _index=0;
+var flag=true;//Is allow print words
+document.oncontextmenu = function (){ return false;} //ban mouse right button
 
 $(document).ready(function(){
     $("#icon").flicker(700);
     autoPrint(data[_index],openKey);//输出完成后开启键盘
 });
-
- var flag=true;//Is allow print words
- document.oncontextmenu = function (){ return false;} //ban mouse right button
  function openKey(){ 
 	document.onkeydown=keydown;
 	document.onmousedown=keydown;
@@ -44,8 +43,7 @@ function keydown(event){
 				autoPrint(data[_index],openKey);
 			}	
 		}	  
-    }
-	
+    }	
 	if (event.button==2){ 		
 	    if(_index>0){
 			_index--;
@@ -65,14 +63,6 @@ function keydown(event){
 	} 
 }
 
-   
-   
-   
-   
-   
-   
-   
-//闪烁
 $.fn.flicker = function (speed) {
     var n = 0;
     var _this = $(this);
@@ -87,7 +77,7 @@ $.fn.flicker = function (speed) {
    };   
    timer();
 }
-//逐字打印
+
 function autoPrint(words, callback) {
     var _this = $("#word");
     _this.html('');
@@ -96,25 +86,23 @@ function autoPrint(words, callback) {
     } else {
         _this.width(400);
     }
-    _this.show();
-    
-    var index = 0;
+    _this.show();    
+    var i = 0;
     var timer = function () {
-        var current = words.slice(index, index + 1);
+        var current = words.slice(i, i + 1);
         if (current === '<') {
-            index = words.indexOf('>', index) + 1;
+            i = words.indexOf('>', i) + 1;
         } else {
-            index++;
+            i++;
         }        
-        if (index < words.length) {
-            _this.html(words.substring(0, index) + (index & 1 ? '_' : ''));
+        if (i < words.length) {
+            _this.html(words.substring(0, i) + (i & 1 ? '_' : ''));
             setTimeout(arguments.callee, 100);
           
         } else {
-            _this.html(words.substring(0, index));
+            _this.html(words.substring(0, i));
             setTimeout(callback, 100);
-        };
-       
+        };       
     }
     setTimeout(timer, 1000);  
 }
