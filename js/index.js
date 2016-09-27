@@ -18,7 +18,7 @@
 var _index=0;
 var flag=true;//Is allow print words
 document.oncontextmenu = function (){ return false;} //ban mouse right button
-
+document.touchstart=function(E){E.preventDefault();E.stopPropagation();}
 window.onload = function(){	
     $("#icon").flicker(700);
     autoPrint(data[_index],openKey);//输出完成后开启键盘
