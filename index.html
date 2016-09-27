@@ -6,24 +6,43 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Samaritan</title>
+    <link rel='icon' href='favicon.ico' type='image/x-ico' />
+	<link rel="stylesheet" href="css/GalMenu.css" />
+  <script src="js/jquery-1.9.1.min.js"></script>
+   <script type="text/javascript" src="js/GalMenu.js"></script>  
    
-    <script src="js/jquery-1.9.1.min.js"></script>
      <script src="js/index.js"></script>
     <style>
-        body{background-color:#fff;color:#625e5e; }		
-       #main{width:80%;margin:0 auto;height:400px;margin-top:100px;}
-		.word{height:auto;margin:0 auto;min-height:30px; color:#625e5e; font-family:YouYuan;font-weight:700;font-size:18px; display:none; line-height:28px; }      
-        #icon{margin:10px auto;  width :0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-bottom:20px solid #625e5e;}
-	 
+    body{background-color:#fff;color:#625e5e; }		
+    #main{width:80%;margin:0 auto;height:400px;margin-top:100px;}
+	.word{height:auto;margin:0 auto;min-height:30px; color:#625e5e; font-family:YouYuan;font-weight:700;font-size:18px; display:none; line-height:28px; }      
+    #icon{margin:10px auto;  width :0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-bottom:20px solid #625e5e;}
+	.ring a:nth-of-type(1) { background-image: url("img/1.jpg"); } 
+	.ring a:nth-of-type(2) { background-image: url("img/2.jpg"); } 
+	.ring a:nth-of-type(3) { background-image: url("img/3.jpg"); } 
+	.ring a:nth-of-type(4) { background-image: url("img/4.jpg"); } 
+	.ring a:nth-of-type(5) { background-image: url("img/5.jpg"); } 
+	.ring a:nth-of-type(6) { background-image: url("img/6.jpg"); }  
 </style>
 </head>
 <body>
-<form id="form1" runat="server">
+ 
 <div id="main"> 
 <div id="word" class="word"></div>
 <div id="icon"></div>
-
+<div class="GalMenu GalDropDown">
+  <div class="circle" id="gal">
+    <div class="ring">
+      <a href="#" title="Home" class="menuItem">Home</a>
+      <a href="#" title="Blog" class="menuItem">Blog</a>
+      <a href="#" title="About" class="menuItem">About</a>
+      <a href="#" title="Contact" class="menuItem">Contact</a>
+      <a href="#" title="Social" class="menuItem">Social</a>
+      <a href="#" title="Other" class="menuItem">other</a></div>
+  </div>
+</div>     
+ <div id="overlay" style="opacity: 1; cursor: pointer;"></div>
 </div>
-</form>
+ 
 </body>
 </html>

@@ -1,5 +1,5 @@
 ﻿var data=new Array(
-"You are being watch.",
+"You are being watch.",/*
 "The government has a secret system,",
 "A machine that spies on you every hour of every day",
 "I know because I built it.",
@@ -10,7 +10,7 @@
 "They wouldn't act so I decided I would.",
 "I work in secret.",
 "You'll never find me.",
-"If your number is up,",
+"If your number is up,",*/
 "I will find you."
 );
 
@@ -19,10 +19,20 @@ var _index=0;
 var flag=true;//Is allow print words
 document.oncontextmenu = function (){ return false;} //ban mouse right button
 
-$(document).ready(function(){
+window.onload = function(){	
     $("#icon").flicker(700);
     autoPrint(data[_index],openKey);//输出完成后开启键盘
-});
+} 
+function createMenu(){
+	$('body').GalMenu({
+		'menu': 'GalDropDown'
+	});    
+	var items = document.querySelectorAll('.menuItem');
+	for (var i = 0,	l = items.length; i < l; i++) {
+		items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+		items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+  }    
+}
  function openKey(){ 
 	document.onkeydown=keydown;
 	document.onmousedown=keydown;
@@ -44,12 +54,16 @@ function keydown(event){
 			}	
 		}	  
     }	
-	if (event.button==2){ 		
-	    if(_index>0){
-			_index--;
-			closeKey();
-			autoPrint(data[_index],openKey);
-		}	 
+	if (event.button==2){  
+		if(flag){
+			if(_index>0){
+				_index--;
+				closeKey();
+				autoPrint(data[_index],openKey);
+			}	
+		}else{
+		createMenu();
+		}		
 	}else{ 
 		if(flag){
 			_index++;
