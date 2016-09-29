@@ -9,12 +9,11 @@
             $this = $(this);
             $this.each(function(i) {
                 var $this = $(this),
-                settings = $.extend({},
-                GalMenu.defaults, o),
+				settings = $.extend({}, GalMenu.defaults, o),
                 $menu = $('.' + settings.menu);
                 $this.on('mousedown',
                 function(e) {
-                    if (e.which !== 3 && $(e.target).parents('.GalMenu').length < 1 && settings.click_to_close) {
+                    if (e.which  !== 3 && $(e.target).parents('.GalMenu').length < 1 && settings.click_to_close) {
                         $this.find('.GalMenu').stop(true, false).animate({
                             opacity: 0
                         },

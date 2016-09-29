@@ -1,7 +1,7 @@
 ﻿var data=new Array(
-"You are being watch.",/*
+/*"You are being watch.",
 "The government has a secret system,",
-"A machine that spies on you every hour of every day",
+"A machine that spies on you every hour of every day.",
 "I know because I built it.",
 "I designed the machine to detect acts of terror but it sees everything.",
 "Vielent crimes involving ordinary people,",
@@ -10,8 +10,10 @@
 "They wouldn't act so I decided I would.",
 "I work in secret.",
 "You'll never find me.",
-"If your number is up,",*/
-"I will find you."
+"If your number is up,",
+"I will find you."*/
+"I heve no idea.",
+"What can I do next?"
 );
 
 
