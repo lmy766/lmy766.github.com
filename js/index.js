@@ -21,9 +21,14 @@ var flag=true;//Is allow print words
 document.oncontextmenu = function (){ return false;} //ban mouse right button
 document.touchstart=function(E){E.preventDefault();E.stopPropagation();}
 window.onload = function(){	
+	// f3('f3').then(f2).then(f1);//promise.js
+	// start();//async.js
     $("#icon").flicker(700);
-    autoPrint(data[_index],openKey);//输出完成后开启键盘
+	autoPrint(data[_index],openKey);//输出完成后开启键盘
 } 
+
+
+ 
 function createMenu(){
 	$('body').GalMenu({
 		'menu': 'GalDropDown'
